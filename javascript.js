@@ -1,12 +1,10 @@
-// Subarrays
-let arr=[1,2,3,4,5]
-let str=''
-for(let i=0;i<arr.length;i++){
-    str=''
-    for(let j=i;j<arr.length;j++){
-        str+=arr[j]
+//maximum sum subarray 
+let arr=[5,2,-4,-5, 3,-1,2,3,1]
+let currsum=arr[0]
+let max=arr[0]
+for(let i=1;i<arr.length;i++){
+    currsum=Math.max(arr[i],currsum+arr[i])
+    max=Math.max(currsum,max)
 
-    
-    console.log(str)
-    }
 }
+console.log(max)
