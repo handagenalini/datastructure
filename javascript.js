@@ -1,7 +1,16 @@
-let n=0b001111
-let count=0
-while(n>0){
-    count+=n&1
-    n>>=1
+
+let n=7
+function alternatingbits(n){
+let str=n.toString(2)
+let flag=false
+for(let i=0;i<str.length-1;i++){
+    if(parseInt(str[i])+parseInt(str[i+1])==1){
+        flag=true
+    }else{
+        flag= false
+        return flag
+    }
 }
-console.log(count)
+return flag
+}
+console.log(alternatingbits(n))
