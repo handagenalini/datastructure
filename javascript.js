@@ -1,59 +1,40 @@
-class stack{
-    constructor(){
-        this.stack=[]
-        this.stack1=[]
+class listnode{
+    constructor(val,next){
+        this.val=val,
+        this.next=next
     }
-    enqueue(val){
-     
-      this.stack.push(val)
-    
-
-
-    }
-    dequeue(){
-        if(!this.stack.length>0){
-            return this.stack1.pop()
-            
-        }else{
-        while(this.stack.length>0){
-            this.stack1.push(this.stack.pop())
-        }
-        return this.stack1.pop()
-    }
-
-    }
- 
-    front(){
-        if(!this.stack1.length>0){
-            return this.stack1[this.stack1.length-1]
-            
-        }else{
-        while(this.stack.length>0){
-            this.stack1.push(this.stack.pop())
-        }
-        return this.stack1[this.stack1.length-1]
-    }
-        
-    }
-    isempty(){
-        if(this.stack1.length===0 && this.stack.length===0){
-            return true
-        }else{
-            return false
-        }
-
-    }
-  
 }
-let c=new stack()
-c.enqueue(1)
-c.enqueue(2)
-c.enqueue(3)
-c.enqueue(4)
-c.enqueue(5)
-console.log(c.dequeue())
-console.log(c.front())
-console.log(c.dequeue())
+function rotetatelist(head,k){
+    if(head==null){
+        return
+    }
+    let size=1
+    let cur=head
+    while(cur.next){
+        cur=cur.next
+        size+=1
+    }
+    cur.next=head
+    for(let i=0;i<(size-(k%size)-1);i++){
+        head=head.next
+
+    }
+    let res=head.next
+    head.next=null
+    return res
+}
+let k=2
+// console.log(rotetatelist(head,k))
+let node5=new listnode(6)
+let node4=new listnode(5,node5)
+let node3=new listnode(4,node4)
+let node2=new listnode(3,node3)
+
+
+let node1=new listnode(2,node2)
+let head=new listnode(1,node1)
+console.log(rotetatelist(head,k))
+console.log(head)
 
   
 
