@@ -1,16 +1,22 @@
-
-let n=7
-function alternatingbits(n){
-let str=n.toString(2)
-let flag=false
-for(let i=0;i<str.length-1;i++){
-    if(parseInt(str[i])+parseInt(str[i+1])==1){
-        flag=true
-    }else{
-        flag= false
-        return flag
+let arr = [0,1,2,3,4,5,6,7,8]
+function sortbybits(arr){
+    arr.sort((a,b)=>{
+        let counta=count(a)
+        let countb=count(b)
+        if(counta==countb){
+            return a-b
+        }else{
+            return counta-countb
+        }
+    })
+    function count(n){
+        let count=0
+        while(n>0){
+            count+=n&1
+            n>>=1
+        }
+        return count
     }
+    return arr
 }
-return flag
-}
-console.log(alternatingbits(n))
+console.log(sortbybits(arr))
