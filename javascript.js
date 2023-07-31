@@ -1,24 +1,12 @@
-// store n prime numbers in an array
-let n=5
-let i=2
-let arr=[]
-while(arr.length<n){
-    if(isprime(i)){
-        arr.push(i)
-      
- }
- i++
-}
-function isprime(num){
-    if(num<2){
-        return false
-    }
-    for(let i=2;i<=Math.sqrt(num);i++){
-        if(num%i==0){
-            return false
-        }
-    }
-    return true
+// Subarrays
+let arr=[1,2,3,4,5]
+let str=''
+for(let i=0;i<arr.length;i++){
+    str=''
+    for(let j=i;j<arr.length;j++){
+        str+=arr[j]
 
+    
+    console.log(str)
+    }
 }
-console.log(arr)
