@@ -4,24 +4,26 @@ class listnode{
         this.next=next
     }
 }
-function rotetatelist(head,k){
+function cycle(head){
     if(head==null){
         return
     }
-    let dummy=new listnode(0)
-    dummy.next=head
-    let left=dummy
-    let right=head
-    while(k>0 && right){
-        right=right.next
-        k--
+    let fast=head
+    let slow=head 
+    while(fast && fast.next){
+        fast=fast.next.next
+        slow=slow.next
+        if(slow==fast){
+            slow=head
+            while(slow!=fast){
+                slow=slow.next
+                fast=fast.next
+            }
+            return slow
+        }
     }
-    while(right){
-        right=right.next
-        left=left.next
-    }
-    left.next=left.next.next
-    return dummy.next
+    return null
+
 
 }
 let k=2
@@ -34,7 +36,7 @@ let node2=new listnode(3,node3)
 
 let node1=new listnode(2,node2)
 let head=new listnode(1,node1)
-console.log(rotetatelist(head,k))
+console.log(cycle(head))
 console.log(head)
 
   
