@@ -8,20 +8,21 @@ function rotetatelist(head,k){
     if(head==null){
         return
     }
-    let size=1
-    let cur=head
-    while(cur.next){
-        cur=cur.next
-        size+=1
+    let dummy=new listnode(0)
+    dummy.next=head
+    let left=dummy
+    let right=head
+    while(k>0 && right){
+        right=right.next
+        k--
     }
-    cur.next=head
-    for(let i=0;i<(size-(k%size)-1);i++){
-        head=head.next
+    while(right){
+        right=right.next
+        left=left.next
+    }
+    left.next=left.next.next
+    return dummy.next
 
-    }
-    let res=head.next
-    head.next=null
-    return res
 }
 let k=2
 // console.log(rotetatelist(head,k))
